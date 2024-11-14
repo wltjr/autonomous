@@ -1,0 +1,19 @@
+name: CI
+on:
+    push:
+        branches: [ main ]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Check out repository
+            uses: actions/checkout@v4
+          - name: Run the build process inside Docker container
+            uses: addnab/docker-run-action@v3
+            with:
+                image: unfrobotics/docker-ros2-jazzy:latest
+                options: -v ${{ github.workspace }}:/opt/ros_ws/src/autonomous
+                run: |
+                    . /opt/ros/jazzy/setup.sh
+                    cd /opt/ros_ws/
+                    colcon build --symlink-install --packages-select  autonomous
