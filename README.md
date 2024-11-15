@@ -1,6 +1,6 @@
 # autonomous
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=plastic)](https://github.com/wltjr/autonomous/blob/master/LICENSE.txt)
-![Build Status](https://github.com/wltjr/autonomous/actions/workflows/docker_build.yml/badge.svg)
+[![Build Status](https://github.com/wltjr/autonomous/actions/workflows/docker_build.yml/badge.svg)](https://github.com/wltjr/autonomous/actions)
 [![Code Quality](https://sonarcloud.io/api/project_badges/measure?project=wltjr_autonomous&metric=alert_status)](https://sonarcloud.io/dashboard?id=wltjr_autonomous)
 
 autonomous is a ROS 2 package that is used to set one or more way points, or goal
