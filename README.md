@@ -50,5 +50,12 @@ existing rather than used directly. For completion sake, the launcher is
 provided, and can be used from another launcher to invoke this stack.
 
 ```bash
-ros2 launch depth_laser_merger depth_laser_merger.py
+ros2 launch autonomy autonomous.py
+```
+
+## Usage
+To use the package, or to publish the desired goal pose location run the
+following command, or have the following message be published.
+```bash
+ros2 topic pub /autonomy std_msgs/String "data: 'go'" -1
 ```
