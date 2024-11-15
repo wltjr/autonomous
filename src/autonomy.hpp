@@ -25,7 +25,7 @@ namespace autonomous
              * 
              * @param options node options passed at startup
              */
-            Autonomy(const rclcpp::NodeOptions &options = rclcpp::NodeOptions());
+            explicit Autonomy(const rclcpp::NodeOptions &options = rclcpp::NodeOptions());
 
             /**
              * @brief Destroy the Autonomy object instance
