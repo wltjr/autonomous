@@ -22,9 +22,7 @@ namespace autonomous
                 rclcpp::QoS(10), std::bind(&Autonomy::autonomyCallback, this, _1));
     }
 
-    Autonomy::~Autonomy()
-    {
-    }
+    Autonomy::~Autonomy() = default;
 
     void Autonomy::autonomyCallback(const std_msgs::msg::String::SharedPtr msg)
     {
