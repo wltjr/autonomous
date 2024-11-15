@@ -39,6 +39,9 @@ namespace autonomous
             // subscription - the /autonomy topic we listen to
             rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_autonomy_;
 
+            std::vector<double> goal_poses;
+            std::string frame_id;
+
             /**
              * @brief Callback function for subscription fired when messages
              *        on the /autonomy topic are heard
