@@ -13,6 +13,18 @@ namespace autonomous
     Autonomy::Autonomy(const rclcpp::NodeOptions &options)
         : Node("autonomy", options)
     {
+        // load goal_poses from yaml config
+        if (!this->has_parameter("goal_poses")) {
+            this->declare_parameter("goal_poses", std::vector<double>(3));
+        }
+        goal_poses = this->get_parameter("goal_poses").as_double_array();
+
+        // load frame_id from yaml config
+        if (!this->has_parameter("frame_id")) {
+            this->declare_parameter("frame_id", "map");
+        }
+        frame_id = this->get_parameter("frame_id").as_string();
+
         // publish to /goal_pose topic
         publisher_goal_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pose", 10);
 
@@ -32,10 +44,10 @@ namespace autonomous
             auto goal_msg = std::make_unique<geometry_msgs::msg::PoseStamped>();
 
             goal_msg->header.stamp = rclcpp::Time(0, 0, this->get_clock()->get_clock_type());
-            goal_msg->header.frame_id = "map";
-            goal_msg->pose.position.x = 3.0;
-            goal_msg->pose.position.y = 3.0;
-            goal_msg->pose.position.z = 0.0;
+            goal_msg->header.frame_id = frame_id;
+            goal_msg->pose.position.x = goal_poses[0];
+            goal_msg->pose.position.y = goal_poses[1];
+            goal_msg->pose.position.z = goal_poses[2];
             goal_msg->pose.orientation.w = 1.0;
 
             // publish goal
