@@ -5,7 +5,8 @@
 
 autonomous is a ROS 2 package that is used to set one or more way points, or goal
 pose destinations, that is then used by [Nav2](https://nav2.org/) to navigate
-the robot.
+the robot. Only a single goal is supported at this time, multi-goal poses will
+be supported at a later date TBD.
 
 ## Download
 Download and unpack or clone this repositories contents into your ros2
@@ -33,3 +34,21 @@ You may want to have your development user environment do this on login via
 source ~/ros2_ws/install/setup.bash
 ```
 
+## Configuration
+The package can be configured using an external yaml config file or directly
+when launched as included in the provided launch script. The follow are all
+required parameters, where `goal_poses` are a vector of `(X,Y,Z)` goal
+coordinates and `frame_id` is the frame id of the map for the published `goal_pose`.
+```yaml
+goal_poses: [3.0, 3.0, 0.0]
+frame_id: 'map'
+```
+
+## Launch
+There is a default launcher provided, though this can be integrated into
+existing rather than used directly. For completion sake, the launcher is
+provided, and can be used from another launcher to invoke this stack.
+
+```bash
+ros2 launch depth_laser_merger depth_laser_merger.py
+```
